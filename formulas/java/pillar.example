@@ -1,0 +1,15 @@
+java:
+  oraclejdk:
+    version_name: jdk1.8.0_31
+    source: http://download.oracle.com/otn-pub/java/jdk/8u31-b13/jdk-8u31-linux-x64.tar.gz
+    prefix: /usr/share/java
+  openjdk:
+    package: java-1.7.0-openjdk
+  extensions:
+    common-system.jar:
+      source: http://artifactory-host/artifactory/group/id/version/common-system.jar
+      source_hash: md5=301b3e826399248ffacbb7678edde61f
+    my-protocol.jar:
+      source: salt://jenkins/files/my-protocol.jar
+  jsvc:
+    rpm: http://SERVER/jakarta-commons-daemon-jsvc-1.0.15-1.i686.rpm
