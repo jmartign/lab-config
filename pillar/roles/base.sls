@@ -34,7 +34,7 @@ sshd_config:
 
 salt:
   minion:
-    master: salt
+    master: kvm01
     mine_functions:
       network.ip_addrs: []
 
