@@ -14,6 +14,10 @@ base.packages:
       - tree
       - bind-utils
       - nmap-ncat
+      - policycoreutils
+      - policycoreutils-python
+      - setroubleshoot-server
+
 
 base.bash_profile:
   file.managed:
