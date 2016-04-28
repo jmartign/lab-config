@@ -6,6 +6,12 @@ sudoers:
     wheel:
       - 'ALL=(ALL) NOPASSWD: ALL'
 
+users:
+  seth.miller:
+    fullname: Seth Miller
+    ssh_auth_file:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7U7LOdmxhQ87203ROj23kegOO5iMqNaeKQEFLwNSsfs6BAy1mLnZyrvuwVOsknxvW6pyubrvtbQP7fyC3VbgDbpB1jmqTUdYo+4FwMuy9NNyY82VBljnD1FJgNvdLLKMJ5T1jSMze+a2ZLBhcwzY7IO59j1QcQaGE4OPzdToTrQdVp1ZPrlHZn3Y+x3/sO07mTV2TKkg0NkqoCd6pLvxq9PKBPIqokjctA44RCgJNtE7WoO9Es041G5fcUMwGWaji62XNVVg5dMVY9YU6sOAn94weY5uyInc8kGsmE/pC40dzPodJix9YVJpl/+6QFyRA+zSkc3rjO2Ko839d17e1 smiller@oxygen
+
 bash:
   profile: |
     shopt -s checkwinsize
