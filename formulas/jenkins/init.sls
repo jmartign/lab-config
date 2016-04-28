@@ -10,8 +10,6 @@ jenkins:
   pkg.installed:
     - name: {{ jenkins.package }}
     - refresh: True
-  pip.installed:
-    - name: python-gnupg
   service.running:
     - name: {{ jenkins.service }}
     - enable: True
