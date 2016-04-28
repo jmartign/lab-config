@@ -1,0 +1,8 @@
+{% set jenkins = salt['grains.filter_by']({
+    'RedHat': {
+        'package': 'jenkins',
+        'service': 'jenkins',
+	'apache_package': 'httpd',
+	'apache_config': '/etc/httpd/conf.d/jenkins.conf',
+    },
+}, merge=salt['pillar.get']('jenkins:lookup')) %}
