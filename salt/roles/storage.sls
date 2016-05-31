@@ -8,7 +8,9 @@ zfs.repo:
     - gpgcheck: 0
 
 
-
+zfs:
+  pkg.intalled:
+    - name: zfs
 
 
 
