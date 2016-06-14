@@ -4,3 +4,7 @@ base:
 
   'gluster*':
     - roles.storage
+
+  'docker*':
+    - roles.docker
+
