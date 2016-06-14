@@ -19,3 +19,11 @@ docker-engine:
 docker.user:
   user.present:
     - name: docker
+
+/etc/systemd/system/docker.service.d/local.conf:
+  file.managed:
+    - contents: |
+        [Service]
+        ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
+
+  
