@@ -7,6 +7,6 @@ docker.repo:
     - gpgcheck: 1
     - gpgkey: https://yum.dockerproject.org/gpg
 
-docker.machine:
+docker.engine:
   pkg.installed:
-    - name: docker-machine
+    - name: docker-engine

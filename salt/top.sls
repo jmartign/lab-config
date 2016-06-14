@@ -6,5 +6,4 @@ base:
     - roles.storage
 
   'docker*':
-    - roles.docker
-
+    - docker
