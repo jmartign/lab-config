@@ -10,3 +10,8 @@ docker.repo:
 docker.engine:
   pkg.installed:
     - name: docker-engine
+  
+docker-engine:
+  service.running:
+    - name: docker-engine
+    - enabled: True
