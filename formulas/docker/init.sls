@@ -13,5 +13,5 @@ docker.engine:
   
 docker-engine:
   service.running:
-    - name: docker-engine
+    - name: docker
     - enable: True
