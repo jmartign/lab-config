@@ -15,3 +15,12 @@ docker-engine:
   service.running:
     - name: docker
     - enable: True
+
+docker.user:
+  user.present:
+    - name: docker
+
+docker.group:
+  group.present:
+    - name: docker
+    - members: docker
