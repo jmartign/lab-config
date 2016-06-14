@@ -16,10 +16,6 @@ docker-engine:
     - name: docker
     - enable: True
 
-docker.user:
-  user.present:
-    - name: docker
-
 /etc/systemd/system/docker.service.d/local.conf:
   file.managed:
     - contents: |
