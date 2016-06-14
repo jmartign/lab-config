@@ -19,8 +19,3 @@ docker-engine:
 docker.user:
   user.present:
     - name: docker
-
-docker.group:
-  group.present:
-    - name: docker
-    - members: docker
