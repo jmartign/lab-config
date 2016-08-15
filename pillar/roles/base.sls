@@ -46,8 +46,9 @@ salt:
     mine_functions:
       network.ip_addrs: []
 
-schedule:
-  highstate:
-    function: state.highstate
-    minutes: 10
-    splay: 120
+#TODO - enable
+# schedule:
+#   highstate:
+#     function: state.highstate
+#     minutes: 10
+#     splay: 120
