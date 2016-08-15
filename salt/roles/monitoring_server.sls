@@ -35,3 +35,11 @@ public:
     - name: public
     - ports:
       - 443/tcp
+
+
+firewalld:
+  service.running:
+    - reload: True
+    - watch:
+      - firewalld: public
+
