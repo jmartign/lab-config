@@ -12,6 +12,7 @@ include:
   - sudoers
   - salt.minion
   - hostsfile
+  - prometheus.node_exporter
 
 base.bash_profile:
   file.managed:
@@ -36,3 +37,18 @@ disable_wpa_supplicant:
   service.dead:
     - name: wpa_supplicant
     - enable: False
+
+
+
+public:
+  firewalld.present:
+    - name: public
+    - ports:
+      - 9100/tcp
+
+firewalld:
+  service.running:
+    - enable: True
+    - watch:
+      - firewalld: public
+
