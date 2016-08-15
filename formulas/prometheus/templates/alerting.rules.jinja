@@ -1,0 +1,22 @@
+# This file is managed by Salt. Manual changes will be overwritten.
+{% for alert in alerts %}
+ALERT {{ alert.name }}
+  IF {{ alert.expression }}
+  {%- if 'duration' in alert %}
+  FOR {{ alert.duration }}
+  {%- endif %}
+  {%- if 'labels' in alert %}
+  LABELS {
+    {%- for label in alert.labels %}
+      {{ label.items()[0][0] }} = "{{ label.items()[0][1] }}",
+    {%- endfor %}
+  }
+  {%- endif %}
+  {%- if 'annotations' in alert %}
+  ANNOTATIONS {
+    {%- for annotation in alert.annotations %}
+      {{ annotation.items()[0][0] }} = "{{ annotation.items()[0][1] }}",
+    {%- endfor %}
+  }
+  {% endif %}
+{%- endfor %}

@@ -1,0 +1,53 @@
+# This file is managed by Salt. Manual changes will be overwritten.
+{% set ldap = salt['pillar.get']('grafana:ldap', {}) %}
+
+# Set to true to log user information returned from LDAP
+verbose_logging = false
+
+[[servers]]
+# Ldap server host (specify multiple hosts space separated)
+host = "{{ ldap.get('host', '127.0.0.1') }}"
+# Default port is 389 or 636 if use_ssl = true
+port = {{ ldap.get('port', 389) }}
+# Set to true if ldap server supports TLS
+use_ssl = {{ ldap.get('use_ssl', 'false') }}
+# set to true if you want to skip ssl cert validation
+ssl_skip_verify = {{ ldap.get('ssl_skip_verify', 'false') }}
+# set to the path to your root CA certificate or leave unset to use system defaults
+# root_ca_cert = /path/to/certificate.crt
+
+# Search user bind dn
+bind_dn = "{{ ldap.get('bind_dn', 'cn=admin,dc=grafana,dc=org') }}"
+# Search user bind password
+bind_password = "{{ ldap.get('bind_password', 'grafana') }}"
+
+# User search filter, for example "(cn=%s)" or "(sAMAccountName=%s)" or "(uid=%s)"
+search_filter = "{{ ldap.get('search_filter', '(cn=%s)') }}"
+
+# An array of base dns to search through
+search_base_dns = {{ ldap.get('search_base_dns', ['dc=grafana,dc=org']) }}
+
+# In POSIX LDAP schemas, without memberOf attribute a secondary query must be made for groups.
+# This is done by enabling group_search_filter below. You must also set member_of= "cn"
+# in [servers.attributes] below.
+
+## Group search filter, to retrieve the groups of which the user is a member (only set if memberOf attribute is not available)
+# group_search_filter = "(&(objectClass=posixGroup)(memberUid=%s))"
+## An array of the base DNs to search through for groups. Typically uses ou=groups
+# group_search_base_dns = ["ou=groups,dc=grafana,dc=org"]
+
+# Specify names of the ldap attributes your ldap uses
+
+{% set attributes = salt['pillar.get']('grafana:ldap:attributes', {}) %}
+[servers.attributes]
+name = "{{ attributes.get('name', 'givenName') }}"
+surname = "{{ attributes.get('surname', 'sn') }}"
+username = "{{ attributes.get('username', 'cn') }}"
+member_of = "{{ attributes.get('member_of', 'memberOf') }}"
+email =  "{{ attributes.get('email', 'email') }}"
+
+{% for mapping in salt['pillar.get']('grafana:ldap:group_mappings', []) %}
+[[servers.group_mappings]]
+group_dn = "{{ mapping.get('group_dn') }}"
+org_role = "{{ mapping.get('org_role') }}"
+{% endfor %}

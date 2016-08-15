@@ -1,0 +1,7 @@
+apache:
+  lookup:
+    package: httpd
+    package_devel: httpd-devel
+    service: httpd
+    config: /etc/httpd/conf/httpd.conf
+    config_dir: /etc/httpd/conf.d

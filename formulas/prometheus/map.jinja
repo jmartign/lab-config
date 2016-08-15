@@ -1,0 +1,34 @@
+{% set defaults = {
+  'user': 'prometheus',
+  'group': 'prometheus',
+  'homedir': '/opt/prometheus',
+  'server': {
+    'service': 'prometheus',
+    'source': 'https://github.com/prometheus/prometheus/releases/download/0.17.0rc1/prometheus-0.17.0rc1.linux-amd64.tar.gz',
+    'source_hash': 'md5=2f5c4a43b26ebdf05e5d3e345c6231c3',
+    'directory': 'prometheus-0.17.0rc1.linux-amd64',
+    'install_directory': '/opt/prometheus/bin',
+    'config_file': '/opt/prometheus/prometheus.yaml',
+    'config': {
+      'global': {
+        'scrape_interval': '15s',
+        'evaluation_interval': '15s',
+      },
+    },
+    'storage': {
+      'retention': '360h',
+      'path': "data",
+    },
+   'log_level': 'info',
+  },
+  'node_exporter': {
+      'service': 'prometheus-node_exporter',
+      'source': 'https://github.com/prometheus/node_exporter/releases/download/0.12.0rc1/node_exporter-0.12.0rc1.linux-amd64.tar.gz',
+      'source_hash': 'md5=43d253ea664ea446c6c4a42e03400b30',
+      'install_directory': '/opt/prometheus/bin',
+      'textfile_directory': '/opt/prometheus/textfiles',
+      'log_level': 'info',
+  },
+} %}
+
+{% set prometheus = salt['pillar.get']('prometheus', default=defaults, merge=True) %}

@@ -1,0 +1,47 @@
+prometheus:
+  user: prometheus
+  group: prometheus
+  homedir: /opt/prometheus
+
+  server:
+    service: prometheus
+    source: https://github.com/prometheus/prometheus/releases/download/0.17.0rc1/prometheus-0.17.0rc1.linux-amd64.tar.gz
+    source_hash: md5=2f5c4a43b26ebdf05e5d3e345c6231c3
+    directory: prometheus-0.17.0rc1.linux-amd64
+    install_directory: /opt/prometheus/bin
+    log_level: info
+    storage:
+      retention: 360h
+      path: /var/lib/prometheus/data
+    config:
+      global:
+        scrape_interval:     10s
+        evaluation_interval: 10s
+      rule_files:
+        - /opt/prometheus/rules/alerting.rules
+      scrape_configs:
+        - job_name: prometheus
+          target_groups:
+            - targets:
+              - localhost:9090
+        - job_name: node
+          target_groups:
+            - targets:
+              - localhost:9100
+    alerts:
+      - name: InstanceDown
+        expression: up = 0
+        duration: 1m
+        labels:
+            - severity: page
+            - team: devops
+        annotations:
+            - summary: "Instance {{ '{{' }} $labels.instance {{ '}}' }} down"
+
+  node_exporter:
+    service: prometheus-node_exporter
+    source: https://github.com/prometheus/node_exporter/releases/download/0.12.0rc1/node_exporter-0.12.0rc1.linux-amd64.tar.gz
+    source_hash: md5=43d253ea664ea446c6c4a42e03400b30
+    install_directory: /opt/prometheus/bin
+    textfile_directory: /opt/prometheus/textfiles
+    log_level: info

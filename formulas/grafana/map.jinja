@@ -1,0 +1,10 @@
+{% set defaults = {
+  'user': 'grafana',
+  'group': 'grafana',
+  'package': 'grafana',
+  'service': 'grafana-server',
+  'config_file': '/etc/grafana/grafana.ini',
+  'ldap_file': '/etc/grafana/ldap.toml',
+} %}
+
+{% set grafana = salt['pillar.get']('grafana', default=defaults, merge=True) %}
