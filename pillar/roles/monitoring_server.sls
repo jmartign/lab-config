@@ -63,6 +63,7 @@ prometheus:
     - targets:
       - kvm01.sethmiller.me:9100
       - salt.sethmiller.me:9100
+      - mon.sethmiller.me:9100
       - docker01:9100
       - docker02:9100
       - docker03:9100
