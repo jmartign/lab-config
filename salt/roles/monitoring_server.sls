@@ -26,3 +26,12 @@ include:
     - mode: '0644'
     - contents_pillar: prometheus:targets
     - allow_empty: True
+
+
+
+
+public:
+  firewalld.present:
+    - name: public
+    - ports:
+      - 443/tcp
