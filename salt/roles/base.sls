@@ -1,6 +1,6 @@
 base_packages:
   pkg.installed:
-    - pkgs: {{ base_packages }}
+    - pkgs: {{ salt['pillar.get']('base_packages', {}) }}
 
 {{ salt['pillar.get']('selinux:mode', 'enforcing') }}:
   selinux.mode
