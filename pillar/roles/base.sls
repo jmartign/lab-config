@@ -1,5 +1,5 @@
 base_packages:
-  - vim-enhance
+  - vim-enhanced
   - git
   - tree
   - bind-utils
