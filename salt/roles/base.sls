@@ -35,3 +35,9 @@ base.root_password:
   user.present:
     - name: root
     - password: {{ salt['pillar.get']('system:root_password') }}
+
+
+disable_wpa_supplicant:
+  service.dead:
+    - name: wpa_supplicant
+    - enable: False
