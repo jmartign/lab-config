@@ -1,6 +1,0 @@
-jenkins:
-  lookup:
-    package: jenkins
-    service: jenkins
-    apache_package: httpd
-    apache_config: /etc/httpd/conf.d/jenkins.conf
