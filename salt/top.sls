@@ -1,6 +1,6 @@
 base:
   '*':
-    - roles
+    - roles.base
 
-  'gluster*':
-    - roles.storage
+  'salt*':
+    - roles.salt_master
