@@ -1,3 +1,10 @@
+base_packages:
+  pkg.installed:
+    - pkgs: {{ base_packages }}
+
+{{ salt['pillar.get']('selinux:mode', 'enforcing') }}:
+  selinux.mode
+
 include:
   - users
   - openssh
@@ -5,18 +12,6 @@ include:
   - sudoers
   - salt.minion
   - hostsfile
-
-base.packages:
-  pkg.installed:
-    - pkgs:
-      - vim-enhanced
-      - git
-      - tree
-      - bind-utils
-      - nmap-ncat
-      - policycoreutils
-      - policycoreutils-python
-      - setroubleshoot-server
 
 base.bash_profile:
   file.managed:
