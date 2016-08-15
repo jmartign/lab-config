@@ -9,6 +9,9 @@ base_packages:
   - setroubleshoot-server
   - epel-release
 
+selinux:
+  mode: permissive
+
 system:
   root_password: $6$k2THkTrMxNt24ZBe$EbMoL5p8MxJSBA/efr2K3H0pt7RCThMSZGCQ6R80R7ier1nk5XUgYo7aRME4FHuQUdWiuL.Gk/2H8a.PmN9Rr/
 
