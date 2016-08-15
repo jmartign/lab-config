@@ -4,9 +4,9 @@ grafana:
 
 prometheus:
   server:
-    source: https://github.com/prometheus/prometheus/releases/download/0.19.2/prometheus-0.19.2.linux-amd64.tar.gz
-    source_hash: md5=002c47e13c8edf4164af1351c368ee69
-    directory: prometheus-0.19.2.linux-amd64
+    source: https://github.com/prometheus/prometheus/releases/download/v1.0.1/prometheus-1.0.1.linux-amd64.tar.gz
+    source_hash: md5=415cd0c8dd64f711748db4ee6fcaa80d
+    directory: prometheus-1.0.1.linux-amd64
     storage:
       retention: 720h
       path: /var/lib/prometheus/data
