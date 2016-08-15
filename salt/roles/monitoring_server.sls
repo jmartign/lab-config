@@ -27,19 +27,15 @@ include:
     - contents_pillar: prometheus:targets
     - allow_empty: True
 
-
-
-
 public:
   firewalld.present:
     - name: public
     - ports:
       - 443/tcp
 
-
 firewalld:
   service.running:
-    - reload: True
+    - enable: True
     - watch:
       - firewalld: public
 
