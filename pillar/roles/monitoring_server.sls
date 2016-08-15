@@ -25,7 +25,7 @@ prometheus:
 
         - job_name: 'overwritten-default'
           file_sd_configs:
-            - names:
+            - files:
               - /opt/prometheus/targets.yaml
           relabel_configs:
             - source_labels: ['__address__']
