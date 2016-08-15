@@ -63,10 +63,10 @@ prometheus:
     - targets:
       - kvm01.sethmiller.me:9100
       - salt.sethmiller.me:9100
-      - docker01.sethmiller.me:9100
-      - docker02.sethmiller.me:9100
-      - docker03.sethmiller.me:9100
-      - docker04.sethmiller.me:9100
+      - docker01:9100
+      - docker02:9100
+      - docker03:9100
+      - docker04:9100
       labels:
           job: 'node'
           kernel: linux
