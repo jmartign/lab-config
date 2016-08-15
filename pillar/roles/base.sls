@@ -38,7 +38,6 @@ sshd_config:
   UseDNS: 'no'
   PermitRootLogin: 'yes'
   PrintMotd: 'yes'
-  Subsystem: 'sftp internal-sftp'
 
 salt:
   minion:
