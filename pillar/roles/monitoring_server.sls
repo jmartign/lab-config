@@ -22,11 +22,15 @@ prometheus:
           metrics_path: /probe
           params:
             module: [http_head]
-          target_groups:
+          static_configs:
             - targets:
               - google.com
               - fineartamerica.com
-              - sethmiller.me
+              - render01.fineartamerica.com/index.html
+              - render02.fineartamerica.com/index.html
+              - render03.fineartamerica.com/index.html
+              - render04.fineartamerica.com/index.html
+              - render05.fineartamerica.com/index.html
           relabel_configs:
             - source_labels: [__address__]
               regex: (.*)(:80)?
