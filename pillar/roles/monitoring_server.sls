@@ -21,7 +21,7 @@ prometheus:
           scrape_interval: 60s
           metrics_path: /probe
           params:
-            module: [http_head]
+            module: [http_2xx]
           static_configs:
             - targets:
               - google.com
@@ -90,7 +90,6 @@ prometheus:
   targets: |
     - targets:
       - kvm01.sethmiller.me:9100
-      - salt.sethmiller.me:9100
       - mon.sethmiller.me:9100
       - docker01:9100
       - docker02:9100
