@@ -6,3 +6,4 @@ docker:
 hostsfile:
   hosts:
     docker-registry: 192.168.1.106
+    docker-registry.sethmiller.me: 192.168.1.106
