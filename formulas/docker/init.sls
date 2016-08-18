@@ -31,7 +31,7 @@ docker.disable_firewalld:
     - name: firewalld
     - enable: False
 
-{% set registry_cert = salt['pillar.get']('docker:registry_certificate', None) %}
+{% set registry_cert = salt['pillar.get']('docker:registry:certificate', None) %}
 {% if registry_cert %}
 docker.registry_cert:
   file.managed:
