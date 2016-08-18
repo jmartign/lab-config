@@ -15,7 +15,7 @@ docker.service:
     - user: root
     - source: salt://docker/files/docker.service
   cmd.wait:
-    - name: stemctl daemon-reload
+    - name: systemctl daemon-reload
     - watch:
       - file: /usr/lib/systemd/system/docker.service
 
