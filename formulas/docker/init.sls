@@ -18,6 +18,9 @@ docker.service:
     - name: systemctl daemon-reload
     - watch:
       - file: /usr/lib/systemd/system/docker.service
+  service.running:
+    - name: docker
+    - enable: True
 
 docker.installed:
   pkg.installed:
