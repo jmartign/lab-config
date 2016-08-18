@@ -13,6 +13,7 @@ include:
   - salt.minion
   - hostsfile
   - prometheus.node_exporter
+  - nfs.client
 
 base.bash_profile:
   file.managed:

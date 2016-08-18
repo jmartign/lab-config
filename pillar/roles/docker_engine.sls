@@ -50,3 +50,9 @@ hostsfile:
   hosts:
     docker-registry: 192.168.1.106
     docker-registry.sethmiller.me: 192.168.1.106
+
+
+nfs:
+  mounts:
+    - path: /data
+    - device: storage01:/volume1/docker

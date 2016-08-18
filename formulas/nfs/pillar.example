@@ -1,0 +1,4 @@
+nfs:
+  mounts:
+    - path: /data/storage
+    - device: some-server.com:/mount
