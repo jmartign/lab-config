@@ -31,3 +31,13 @@ docker.disable_firewalld:
     - name: firewalld
     - enable: False
 
+{% set registry_cert = salt['pillar.get']('docker:registry_certificate', None) %}
+{% if registry_cert %}
+docker.registry_cert:
+  file.managed:
+     - name: /etc/docker/certs.d/{{ registry_cert.name }}/ca.crt
+     - makedirs: True
+     - user: root
+     - mode: '0600'
+     - contents: {{ registry_cert.certificate }}
+{% endif %}
