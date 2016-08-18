@@ -8,6 +8,17 @@ docker.repo:
     - require_in:
       - pkg: docker-engine
 
+docker.service:
+  file.managed:
+    - name: /usr/lib/systemd/system/docker.service
+    - mode: '0600'
+    - user: root
+    - source: salt://docker/files/docker.service
+  cmd.wait:
+    - name: stemctl daemon-reload
+    - watch:
+      - file: /usr/lib/systemd/system/docker.service
+
 docker.installed:
   pkg.installed:
     - name: docker-engine

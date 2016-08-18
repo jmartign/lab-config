@@ -10,16 +10,23 @@
 #  mine_interval: 2
 
 {%- set minealias = salt['pillar.get']('hostsfile:alias', 'network.ip_addrs') %}
-{%- set addrs = salt['mine.get']('*', minealias) %}
+{%- set minions = salt['pillar.get']('hostsfile:minions', '*') %}
+{%- set hosts = {} %}
+{%- set pillar_hosts = salt['pillar.get']('hostsfile:hosts', {}) %}
+{%- set mine_hosts = salt['mine.get'](minions, minealias) %}
+{%- if mine_hosts is defined %}
+{%-   do hosts.update(mine_hosts) %}
+{%- endif %}
+{%- do hosts.update(pillar_hosts) %}
 
-{%- if addrs is defined %}
-
-{%- for name, addrlist in addrs.items() %}
+{%- for name, addrlist in hosts.items() %}
 {{ name }}-host-entry:
   host.present:
-    - ip: {{ addrlist|first() }}
+{% if addrlist is string %}
+    - ip: {{ addrlist }}
+{% else %}
+    - ip: {{ addrlist|first }}
+{% endif %}
     - names:
       - {{ name }}
 {% endfor %}
-
-{% endif %}
