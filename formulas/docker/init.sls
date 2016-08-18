@@ -39,5 +39,5 @@ docker.registry_cert:
      - makedirs: True
      - user: root
      - mode: '0600'
-     - contents: {{ registry_cert.certificate }}
+     - contents_pillar: docker:registry:certificate:certificate
 {% endif %}
