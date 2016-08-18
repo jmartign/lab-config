@@ -6,3 +6,4 @@ docker_engine:
 
 include:
   - docker
+  - docker.swarm
