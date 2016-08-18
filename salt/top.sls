@@ -10,3 +10,6 @@ base:
 
   'docker03*':
     - roles.docker_engine
+
+  'docker02*':
+    - roles.docker_engine
