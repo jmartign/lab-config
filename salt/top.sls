@@ -8,8 +8,5 @@ base:
   'mon*':
     - roles.monitoring_server
 
-  'docker03*':
-    - roles.docker_engine
-
-  'docker02*':
+  'docker*':
     - roles.docker_engine
