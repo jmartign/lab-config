@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 set -u
-set -e
 
 readonly token="$1"
 readonly manager="$2"
@@ -13,7 +12,7 @@ rpm -q docker-engine || exit
 ps -C dockerd || exit
 
 # See if already part of Swarm.
-/bin/docker info | grep 'Swarm: active' || exit
+/bin/docker info | grep 'Swarm: active' && exit
 
 # Join the swarm.
 /bin/docker swarm join --token "$token" "$manager"
